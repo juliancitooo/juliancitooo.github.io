@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compra de Producto</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        header {
+    background: linear-gradient(45deg, #533678, #563e70);
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    font-family: 'Lucida Handwriting', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 44px;
+    margin: 0;
+    position: relative;
+    animation: moveTitle 2s infinite alternate; /* Animación de movimiento */
+}
+
+@keyframes moveTitle {
+    from {
+        transform: translateX(-20px); /* Empieza moviéndose hacia la izquierda */
+    }
+    to {
+        transform: translateX(20px); /* Termina moviéndose hacia la derecha */
+    }
+}
+
+        main {
+            padding: 20px;
+            text-align: center;
+        }
+        .producto {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-bottom: 20px;
+            transition: transform 0.3s ease;
+            display: flex;
+            align-items: center;
+        }
+        .producto:hover {
+            transform: translateY(-5px);
+            box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.2);
+        }
+        .producto img {
+            max-width: 100%;
+            height: auto;
+            width: 250px; /* Tamaño deseado para la imagen */
+            height: auto; /* Para mantener la proporción */
+            border-radius: 10px;
+            margin-right: 20px;
+        }
+        .producto h2 {
+            margin-top: 0;
+            font-size: 24px;
+            color: #4b0082; /* Morado oscuro */
+        }
+        .producto p {
+            margin-bottom: 10px;
+            color: #666;
+        }
+        .producto .descripcion {
+            flex: 1;
+            text-align: left;
+            font-size: 18px;
+        }
+        .producto .precio {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+        .btn-comprar {
+            text-align: right;
+        }
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #8a6bbe; /* Morado más oscuro */
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        .btn:hover {
+            background-color: #b0a4c7; /* Morado suave */
+            transform: translateY(-2px);
+        }
+        footer {
+            background-color: #b0a4c7; /* Morado suave */
+            color: #444;
+            padding: 20px;
+            text-align: center;
+            border-radius: 0 0 10px 10px;
+            box-shadow: 0px -4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Estilos del modal */
+        #modal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            width: 100%;
+            height: 100%;
+            z-index: 1000;
+        }
+        #modal-content {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            animation: fadeIn 0.3s ease;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        .form-field {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+        .form-field label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .form-field input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .form-field input:focus {
+            outline: none;
+            border-color: #8a6bbe; /* Morado más oscuro */
+        }
+        .form-field .error-message {
+            color: #ff0000;
+            font-size: 14px;
+        }
+        .form-field .success-message {
+            color: #00ff00;
+            font-size: 14px;
+        }
+        
+    </style>
+</head>
+<body>
+    <header>
+        <h1>J<i>ewelry</i> G<i>oat</i></h1>
+    </header> 
+
+    <main>
+        <div class="producto">
+            <img src="https://www.0800donrouch.com.ar/images/521/ANILLO_CLASICO_ORO_0800_DON_ROUCH2022-07-13-12-06-45pm.png" alt="Producto" id="producto-imagen">
+            <div class="descripcion">
+                <h2>Anillo de Oro 24k. Colab x 0800</h2>
+                <p class="precio">Precio: $1,200</p>
+                <p>Descripción: "Anillo de oro puro de 24 quilates, elaborado por Don Rouch, empresa italoargentina experta en la elaboración de arte en oro. 
+                    Haz una declaración audaz de tu estilo y elegancia con nuestro anillo de oro lujoso.
+                     ¡No solo es una joya, es una experiencia que trasciende el tiempo y la moda!"
+                </p>
+            </div>
+            <div class="btn-comprar">
+                <a href="#" class="btn comprar-btn" id="comprarBtn">Comprar</a> <!-- Asegúrate de tener el ID 'comprarBtn' aquí -->
+            </div>
+        </div>
+    </main>
+    <a href="index.html" class="btn">Volver a la Página Principal</a>
+    <footer>
+        <p>&copy; 2024 Tienda de Juli.</p>
+    </footer>
+
+    <div id="modal">
+        <div id="modal-content">
+            <h2>Confirmar compra</h2>
+            <form id="compraForm">
+                <div class="form-field">
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" id="nombre" name="nombre" required>
+                    <div class="error-message" id="nombre-error"></div>
+                </div>
+                <div class="form-field">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                    <div class="error-message" id="email-error"></div>
+                </div>
+                <input type="button" value="Confirmar compra" id="confirmarCompraBtn" class="btn">
+            </form>
+            <div id="success-message" class="success-message"></div>
+        </div>
+    </div>
+
+    <script>
+        const comprarBtn = document.getElementById('comprarBtn');
+        const modal = document.getElementById('modal');
+        const confirmarCompraBtn = document.getElementById('confirmarCompraBtn');
+        const nombreInput = document.getElementById('nombre');
+        const emailInput = document.getElementById('email');
+        const nombreError = document.getElementById('nombre-error');
+        const emailError = document.getElementById('email-error');
+        const successMessage = document.getElementById('success-message');
+
+        comprarBtn.addEventListener('click', function(event) {
+            event.preventDefault();
+            modal.style.display = 'flex';
+        });
+
+        window.addEventListener('click', function(event) {
+            if (event.target === modal) {
+                modal.style.display = 'none';
+                resetForm();
+            }
+        });
+
+        confirmarCompraBtn.addEventListener('click', function() {
+            if (validateForm()) {
+                successMessage.textContent = '¡Gracias por tu compra, ' + nombreInput.value + '! Te hemos enviado un correo electrónico de confirmación a ' + emailInput.value + '.';
+                successMessage.style.display = 'block';
+                modal.style.display = 'none';
+                resetForm();
+            }
+        });
+
+        function validateForm() {
+            let isValid = true;
+            if (nombreInput.value.trim() === '') {
+                nombreError.textContent = 'Por favor, ingresa tu nombre.';
+                isValid = false;
+            } else {
+                nombreError.textContent = '';
+            }
+            if (emailInput.value.trim() === '') {
+                emailError.textContent = 'Por favor, ingresa tu correo electrónico.';
+                isValid = false;
+            } else if (!isValidEmail(emailInput.value.trim())) {
+                emailError.textContent = 'Por favor, ingresa un correo electrónico válido.';
+                isValid = false;
+            } else {
+                emailError.textContent = '';
+            }
+            return isValid;
+        }
+
+        function isValidEmail(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+
+        function resetForm() {
+            nombreInput.value = '';
+            emailInput.value = '';
+            nombreError.textContent = '';
+            emailError.textContent = '';
+            successMessage.textContent = '';
+        }
+    </script>
+</body>
+</html>

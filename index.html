@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jewelry Goat</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        header {
+            background: linear-gradient(45deg, #533678, #391f54);
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            font-family: 'Lucida Handwriting', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 44px;
+            margin: 0;
+            position: relative;
+            animation: moveTitle 2s infinite alternate; /* Animación de movimiento */
+        }
+        @keyframes moveTitle {
+            from {
+                transform: translateX(-20px); /* Empieza moviéndose hacia la izquierda */
+            }
+            to {
+                transform: translateX(20px); /* Termina moviéndose hacia la derecha */
+            }
+        }
+        .navbar {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            width: 200px;
+            background: linear-gradient(45deg, #391f54, #533678);
+            color: #fff;
+            padding: 20px;
+            box-sizing: border-box;
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+            border-radius: 0 0 5px 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            z-index: 999;
+        }
+        .navbar.active {
+            transform: translateX(0);
+        }
+        .navbar ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .navbar ul li {
+            margin-bottom: 10px;
+            opacity: 0;
+            transform: translateY(-20px);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+        .navbar.active ul li {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .navbar ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 18px;
+            display: block;
+            padding: 10px 0;
+            transition: color 0.3s;
+        }
+        .navbar ul li a:hover {
+            color: #ccc;
+        }
+        footer {
+            background: linear-gradient(45deg, #533678, #391f54);
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+        #banner {
+            background: linear-gradient(45deg, #391f54, #533678);
+            color: #fff;
+            padding: 50px 20px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 50px;
+        }
+        #banner h2 {
+            font-size: 35px;
+            margin-bottom: 20px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        #banner p {
+            font-size: 20px;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+        #banner .btn {
+            padding: 15px 30px;
+            font-size: 20px;
+            background-color: #fff;
+            color: #533678;
+            border: none;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+            text-transform: uppercase;
+            cursor: pointer;
+        }
+        #banner .btn:hover {
+            background-color: #533678;
+            color: #fff;
+        }
+        #productos {
+            padding: 50px 20px;
+            text-align: center;
+        }
+        .producto {
+            display: inline-block;
+            margin: 20px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        .producto:hover {
+            transform: translateY(-5px);
+        }
+        .producto img {
+            width: 200px;
+            height: auto;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+        .producto h3 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: #533678;
+            font-weight: bold;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        .producto p {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: #666;
+        }
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #533678;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        .btn:hover {
+            background-color: #391f54;
+            transform: translateY(-2px);
+        }
+        #navbarToggle {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            cursor: pointer;
+            color: #fff;
+            font-size: 24px;
+            z-index: 9999;
+            transition: transform 0.3s ease;
+        }
+        #navbarToggle.active {
+            transform: rotate(90deg);
+        }
+        #navbarBackdrop {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 998;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+        #navbarBackdrop.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <h1>J<i>ewelry</i> G<i>oat</i></h1>
+    <div id="navbarToggle">&#9776;</div>
+    <div class="navbar" id="navbar">
+        <ul>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="productos.html">Productos</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+    </div>
+    <div id="navbarBackdrop"></div>
+</header>
+
+<section id="banner">
+    <h2>¡No es Messi ni Ronaldo, ¡eres tú!</h2> 
+    <p>¡Con nuestra joyería, siempre serás el GOAT en estilo y distinción!</p>
+    <a href="productos.html" class="btn">Ver colección</a>
+</section>
+
+<section id="productos">
+    <h2>Productos Destacados</h2>
+    <div class="producto">
+        <img src="https://www.0800donrouch.com.ar/images/521/ANILLO_CLASICO_ORO_0800_DON_ROUCH2022-07-13-12-06-45pm.png" alt="Diamante 1">
+        <h3>Anillo de Oro 24k. Colab x 0800</h3>
+        <p>Precio: $2,100</p>
+        <a href="productodestacado-1.html" class="btn">Comprar</a>
+    </div>
+    <div class="producto">
+        <img src="NicePng_rolex-watch-png_7924047.png" alt="Diamante 2">
+        <h3>Rolex Day-Date. Diamantes vvs</h3>
+        <p>Precio: $20,000</p>
+        <a href="productodestacado-2.html" class="btn">Comprar</a>
+    </div>
+    <!-- Agrega más productos aquí -->
+</section>
+
+<footer>
+    <p>&copy; 2024 Jewelry Goat.</p>
+</footer>
+
+<script>
+    const navbarToggle = document.getElementById('navbarToggle');
+    const navbar = document.getElementById('navbar');
+    const navbarBackdrop = document.getElementById('navbarBackdrop');
+
+    navbarToggle.addEventListener('click', function() {
+        navbar.classList.toggle('active');
+        navbarBackdrop.classList.toggle('active');
+        navbarToggle.classList.toggle('active');
+    });
+
+    navbarBackdrop.addEventListener('click', function() {
+        navbar.classList.remove('active');
+        navbarBackdrop.classList.remove('active');
+        navbarToggle.classList.remove('active');
+    });
+</script>
+</body>
+</html>
