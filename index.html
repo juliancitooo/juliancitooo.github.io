@@ -198,6 +198,23 @@
             opacity: 1;
             pointer-events: auto;
         }
+        #radio-section {
+            padding: 50px 20px;
+            text-align: center;
+            background-color: #fff;
+            margin: 20px 0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+        #radio-section h2 {
+            font-size: 30px;
+            margin-bottom: 20px;
+            color: #533678;
+        }
+        #radio-section audio {
+            width: 100%;
+            max-width: 600px;
+        }
     </style>
 </head>
 <body>
@@ -218,6 +235,14 @@
     <h2>¡No es Messi, ni es Ronaldo ¡eres tú!</h2> 
     <p>¡Con nuestra joyería, siempre serás el GOAT en estilo y distinción!</p>
     <a href="productos.html" class="btn">Ver colección</a>
+</section>
+
+<section id="radio-section">
+    <h2>Escucha Nuestra Radio en Vivo</h2>
+    <audio controls>
+        <source src="http://localhost:8000/live.mp3" type="audio/mpeg">
+        Tu navegador no soporta el elemento de audio.
+    </audio>
 </section>
 
 <section id="productos">
@@ -257,30 +282,6 @@
         navbarBackdrop.classList.remove('active');
         navbarToggle.classList.remove('active');
     });
-    <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mi Radio en Vivo</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            padding: 20px;
-        }
-        audio {
-            width: 100%;
-            max-width: 600px;
-            margin: 20px auto;
-        }
-    </style>
-</head>
-<body>
-    <h1>Escucha Mi Radio en Vivo</h1>
-    <audio controls>
-        <source src="http://localhost:8000/live.mp3" type="audio/mpeg">
-        Tu navegador no soporta el elemento de audio.
-    </audio>
-    <p>Escucha en vivo a través del reproductor de arriba.</p>
 </script>
 </body>
 </html>
